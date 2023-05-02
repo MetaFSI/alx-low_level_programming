@@ -1,12 +1,10 @@
 #include "lists.h"
 
 /**
- * struct listint_s - prints elements
- * @n: list of that's type listint_t to print
- * @next: points to the next node.
+ * print_listint - all the elements printed => linked list
+ * @h: linked list of listint_t type => print
  *
- * Description: numbers of node
- *
+ * Return: node numbers
  */
 size_t print_listint(const listint_t *h)
 {
@@ -21,3 +19,4 @@ size_t print_listint(const listint_t *h)
 
 	return (num);
 }
+
