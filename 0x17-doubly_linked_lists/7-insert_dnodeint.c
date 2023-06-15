@@ -1,4 +1,5 @@
 #include "lists.h"
+
 /**
  * insert_dnodeint_at_index - node in postion to be inserted.
  * @h: direction of head Pointer.
@@ -8,32 +9,38 @@
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *new_mem, *res_mem = *h;
-	/* unsigned int counter = 0 */
+	dlistint_t *newNode, *curr;
+	unsigned int i;
+
+	if (h == NULL)
+		return (NULL);
 
 	if (idx == 0)
 		return (add_dnodeint(h, n));
 
-	for (; idx != 1; idx--)
-	{
-		if (res_mem == NULL)
-			return (NULL);
-		res_mem = res_mem->next;
-	}
-
-	if (res_mem->next == NULL)
-		return (add_dnodeint_end(h, n));
-
-	new_mem = malloc(sizeof(dlistint_t));
-
-	if (new_mem == NULL)
+	newNode = malloc(sizeof(dlistint_t));
+	if (newNode == NULL) /* checking if fails*/
 		return (NULL);
+	newNode->n = n;
 
-	new_mem->n = n;
-	new_mem->next = res_mem->next;
-	new_mem->prev = res_mem;
-	res_mem->next->prev = new_mem;
-	res_mem->next = new_mem;
+	curr = *h;
+	for (i = 0; i < idx - 1 && curr != NULL; i++)
+		curr = curr->next;
 
-	return (new_mem);
+	if (i == idx - 1 && curr != NULL)
+	{
+		newNode->prev = curr;
+		newNode->next = curr->next;
+		if (curr->next != NULL)
+			curr->next->prev = newNode;
+		else
+			return (add_dnodeint_end(h, n));
+		curr->next = newNode;
+		return (newNode);
+	}
+	else
+	{
+		free(newNode);
+		return (NULL);
+	}
 }
