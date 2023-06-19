@@ -2,8 +2,8 @@
 #include <unistd.h>
 
 /**
- * srand - Overwrites the srand function in the libc shared object
- * @seed: The seed to use for the random number generator. [Will be Ignored]
+ * srand - Overwritessrand of function
+ * @seed: seed random number
  */
 void srand(unsigned int seed)
 {
