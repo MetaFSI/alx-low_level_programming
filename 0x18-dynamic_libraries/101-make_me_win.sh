@@ -1,3 +1,3 @@
 #!/bin/bash
-wget -O /tmp/wik.so https://github.com/MetaFSI/alx-low_level_programming/raw/master/0x18-dynamic_libraries/wik.so
-export LD_PRELOAD=/tmp/wik.so
+wget -O /tmp/last.so https://github.com/MetaFSI/alx-low_level_programming/master/0x18-dynamic_libraries/last.so
+export LD_PRELOAD=/tmp/last.so
